@@ -1,0 +1,85 @@
+
+(base) C:\Users\squir>cd documents/github/mission-to-mars
+
+(base) C:\Users\squir\Documents\GitHub\mission-to-mars>mongo
+MongoDB shell version v5.0.9
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("b6660d2e-82b7-466d-ad27-d09d8b68a830") }
+MongoDB server version: 5.0.9
+================
+Warning: the "mongo" shell has been superseded by "mongosh",
+which delivers improved usability and compatibility.The "mongo" shell has been deprecated and will be removed in
+an upcoming release.
+For installation instructions, see
+https://docs.mongodb.com/mongodb-shell/install/
+================
+---
+The server generated these startup warnings when booting:
+        2022-06-04T23:38:14.908-04:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> use practicedb
+switched to db practicedb
+> db
+practicedb
+> show dbs
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+weather_app  0.000GB
+> db.zoo.insertOne({name: 'Cleo, species: 'jaguar', age: 12, hobbies: ['sleeping', 'eating', 'climbing']})
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:41
+> db.zoo.insertOne({name: 'Cleo', species: 'jaguar', age: 12, hobbies: ['sleeping', 'eating', 'climbing']})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("629d55dc1da5aa6ac1ea50d7")
+}
+> db.zoo.insertOne({name: 'Banzai', species: 'fox', age: 1, hobbies: ['sleeping', 'eating', 'playing']})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("629d560d1da5aa6ac1ea50d8")
+}
+> db.zoo.insertOne({name: 'Lucy', species: 'parrot', age: 3, hobbies: ['sleeping', 'eating', 'talking']})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("629d56511da5aa6ac1ea50d9")
+}
+> db.zoo.insertOne({name: 'Frank', species: 'monkey', age: 6, hobbies: ['climbing', 'eating', 'swinging']})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("629d56bb1da5aa6ac1ea50da")
+}
+> db.zoo.insertOne({name: 'Spot', species: 'dolphin', age: 8, hobbies: ['swimming', 'eating', 'singing']})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("629d57081da5aa6ac1ea50db")
+}
+> show collections
+zoo
+> db.zoo.find()
+{ "_id" : ObjectId("629d55dc1da5aa6ac1ea50d7"), "name" : "Cleo", "species" : "jaguar", "age" : 12, "hobbies" : [ "sleeping", "eating", "climbing" ] }
+{ "_id" : ObjectId("629d560d1da5aa6ac1ea50d8"), "name" : "Banzai", "species" : "fox", "age" : 1, "hobbies" : [ "sleeping", "eating", "playing" ] }
+{ "_id" : ObjectId("629d56511da5aa6ac1ea50d9"), "name" : "Lucy", "species" : "parrot", "age" : 3, "hobbies" : [ "sleeping", "eating", "talking" ] }
+{ "_id" : ObjectId("629d56bb1da5aa6ac1ea50da"), "name" : "Frank", "species" : "monkey", "age" : 6, "hobbies" : [ "climbing", "eating", "swinging" ] }
+{ "_id" : ObjectId("629d57081da5aa6ac1ea50db"), "name" : "Spot", "species" : "dolphin", "age" : 8, "hobbies" : [ "swimming", "eating", "singing" ] }
+> db.zoo.deleteOne({name: 'Cleo'})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.zoo.drop()
+true
+> db.dropDatabase()
+{ "ok" : 1 }
+> ^C
+bye
+
+(base) C:\Users\squir\Documents\GitHub\mission-to-mars>
